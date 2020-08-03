@@ -77,6 +77,13 @@ static const char *decvolsmall[] = { "amixer", "-q", "sset", "Master", "1%-", NU
 
 static const char *voltoggle[] = { "amixer", "-q", "sset", "Master", "toggle", NULL };
 
+static const char *incmiclarge[] = { "amixer", "-q", "sset", "Capture", "10%+", NULL };
+static const char *incmicsmall[] = { "amixer", "-q", "sset", "Capture", "1%+", NULL };
+
+static const char *decmiclarge[] = { "amixer", "-q", "sset", "Capture", "10%-", NULL };
+static const char *decmicsmall[] = { "amixer", "-q", "sset", "Capture", "1%-", NULL };
+
+static const char *mictoggle[] = { "amixer", "-q", "sset", "Capture", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -87,12 +94,18 @@ static Key keys[] = {
     { MODKEY|ControlMask,           XF86XK_MonBrightnessDown, spawn, {.v = declightsmall } }, 
     { MODKEY,                       XF86XK_MonBrightnessDown, spawn, {.v = declightmed } }, 
     { 0,                            XF86XK_MonBrightnessDown, spawn, {.v = declightlarge } }, 
-    /* audio keys */
+    /* speaker keys */
     { MODKEY,                       XF86XK_AudioRaiseVolume, spawn, {.v = incvolsmall } }, 
     { 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = incvollarge } }, 
     { MODKEY,                       XF86XK_AudioLowerVolume, spawn, {.v = decvolsmall } }, 
     { 0,                            XF86XK_AudioLowerVolume, spawn, {.v = decvollarge } }, 
     { 0,                            XF86XK_AudioMute, spawn, {.v = voltoggle } }, 
+    /* microphone keys */
+    { Mod1Mask|MODKEY,              XF86XK_AudioRaiseVolume, spawn, {.v = incmicsmall } }, 
+    { Mod1Mask,                     XF86XK_AudioRaiseVolume, spawn, {.v = incmiclarge } }, 
+    { Mod1Mask|MODKEY,              XF86XK_AudioLowerVolume, spawn, {.v = decmicsmall } }, 
+    { Mod1Mask,                     XF86XK_AudioLowerVolume, spawn, {.v = decmiclarge } }, 
+    { 0,                            XF86XK_AudioMicMute, spawn, {.v = mictoggle } }, 
     /* regular bindings */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
