@@ -75,21 +75,21 @@ static const char *declightlarge[] = { "light", "-U", "10", NULL };
 static const char *declightmed[] = { "light", "-U", "1", NULL };
 static const char *declightsmall[] = { "light", "-U", "0.1", NULL };
 
-static const char *incvollarge[] = { "amixer", "-q", "sset", "Master", "10%+", NULL };
-static const char *incvolsmall[] = { "amixer", "-q", "sset", "Master", "1%+", NULL };
+static const char *incvollarge[] = { "/home/nicolas/.config/dwm/volume_key", "5%+", NULL };
+static const char *incvolsmall[] = { "/home/nicolas/.config/dwm/volume_key", "1%+", NULL };
 
-static const char *decvollarge[] = { "amixer", "-q", "sset", "Master", "10%-", NULL };
-static const char *decvolsmall[] = { "amixer", "-q", "sset", "Master", "1%-", NULL };
+static const char *decvollarge[] = { "/home/nicolas/.config/dwm/volume_key", "5%-", NULL };
+static const char *decvolsmall[] = { "/home/nicolas/.config/dwm/volume_key", "1%-", NULL };
 
-static const char *voltoggle[] = { "amixer", "-q", "sset", "Master", "toggle", NULL };
+static const char *voltoggle[] = { "/home/nicolas/.config/dwm/volume_key", "toggle", NULL };
 
-static const char *incmiclarge[] = { "amixer", "-q", "sset", "Capture", "10%+", NULL };
-static const char *incmicsmall[] = { "amixer", "-q", "sset", "Capture", "1%+", NULL };
+static const char *incmiclarge[] = { "/home/nicolas/.config/dwm/mic_key", "5%+", NULL };
+static const char *incmicsmall[] = { "/home/nicolas/.config/dwm/mic_key", "1%+", NULL };
 
-static const char *decmiclarge[] = { "amixer", "-q", "sset", "Capture", "10%-", NULL };
-static const char *decmicsmall[] = { "amixer", "-q", "sset", "Capture", "1%-", NULL };
+static const char *decmiclarge[] = { "/home/nicolas/.config/dwm/mic_key", "5%-", NULL };
+static const char *decmicsmall[] = { "/home/nicolas/.config/dwm/mic_key", "1%-", NULL };
 
-static const char *mictoggle[] = { "amixer", "-q", "sset", "Capture", "toggle", NULL };
+static const char *mictoggle[] = { "/home/nicolas/.config/dwm/mic_key", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -107,9 +107,9 @@ static Key keys[] = {
     { 0,                            XF86XK_AudioLowerVolume, spawn, {.v = decvollarge } }, 
     { 0,                            XF86XK_AudioMute, spawn, {.v = voltoggle } }, 
     /* microphone keys */
-    { Mod1Mask|MODKEY,              XF86XK_AudioRaiseVolume, spawn, {.v = incmicsmall } }, 
+    { Mod1Mask|ControlMask,         XF86XK_AudioRaiseVolume, spawn, {.v = incmicsmall } }, 
     { Mod1Mask,                     XF86XK_AudioRaiseVolume, spawn, {.v = incmiclarge } }, 
-    { Mod1Mask|MODKEY,              XF86XK_AudioLowerVolume, spawn, {.v = decmicsmall } }, 
+    { Mod1Mask|ControlMask,         XF86XK_AudioLowerVolume, spawn, {.v = decmicsmall } }, 
     { Mod1Mask,                     XF86XK_AudioLowerVolume, spawn, {.v = decmiclarge } }, 
     { 0,                            XF86XK_AudioMicMute, spawn, {.v = mictoggle } }, 
     /* regular bindings */
